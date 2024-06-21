@@ -42,4 +42,9 @@ public final class CapturingGroup extends WordBase {
     public List<String> buildAlternatives() {
         return Collections.singletonList("." + name + ".");
     }
+
+    @Override
+    public int countAlternatives() {
+        return 1;
+    }
 }

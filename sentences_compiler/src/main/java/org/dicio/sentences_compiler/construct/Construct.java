@@ -44,4 +44,9 @@ public interface Construct {
      * groups will appear as `.capturing_group_name.`.
      */
     List<String> buildAlternatives();
+
+    /**
+     * @return the number of possible alternative sentences that can originate from this construct
+     */
+    int countAlternatives();
 }

@@ -129,4 +129,8 @@ public class Sentence implements CompilableToJava {
     public List<String> buildAlternatives() {
         return sentenceConstructs.buildAlternatives();
     }
+
+    public int countAlternatives() {
+        return sentenceConstructs.countAlternatives();
+    }
 }

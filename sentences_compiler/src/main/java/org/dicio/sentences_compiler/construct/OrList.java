@@ -40,4 +40,11 @@ public final class OrList extends AggregateConstruct {
         }
         return merged;
     }
+
+    @Override
+    public int countAlternatives() {
+        return constructs.stream()
+                .map(Construct::countAlternatives)
+                .reduce(0, Integer::sum);
+    }
 }

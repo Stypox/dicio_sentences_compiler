@@ -4,6 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 
 import org.dicio.sentences_compiler.compiler.CompilerBase;
+import org.dicio.sentences_compiler.compiler.CompilerToCount;
 import org.dicio.sentences_compiler.compiler.CompilerToDataset;
 import org.dicio.sentences_compiler.compiler.CompilerToJava;
 import org.dicio.sentences_compiler.util.CompilerError;
@@ -34,11 +35,13 @@ public class SentencesCompiler {
         final Arguments arguments = new Arguments();
         final JavaCommand javaCommand = new JavaCommand();
         final DatasetCommand datasetCommand = new DatasetCommand();
+        final DatasetCommand countCommand = new DatasetCommand();
         final JCommander argParser = JCommander
                 .newBuilder()
                 .addObject(arguments)
                 .addCommand("java", javaCommand)
                 .addCommand("dataset", datasetCommand)
+                .addCommand("count", countCommand)
                 .build();
 
         for (final String arg : args) {
@@ -69,6 +72,9 @@ public class SentencesCompiler {
                 break;
             case "dataset":
                 compiler = new CompilerToDataset();
+                break;
+            case "count":
+                compiler = new CompilerToCount();
                 break;
             default:
                 throw new ParameterException("Unexpected value: " + argParser.getParsedCommand());

@@ -58,4 +58,9 @@ public final class Word extends WordBase {
     public List<String> buildAlternatives() {
         return Collections.singletonList(value);
     }
+
+    @Override
+    public int countAlternatives() {
+        return 1;
+    }
 }

@@ -25,4 +25,9 @@ public final class OptionalConstruct implements Construct {
     public List<String> buildAlternatives() {
         return Collections.singletonList("");
     }
+
+    @Override
+    public int countAlternatives() {
+        return 1;
+    }
 }

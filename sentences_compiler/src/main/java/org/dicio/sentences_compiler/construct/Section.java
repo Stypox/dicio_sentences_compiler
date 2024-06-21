@@ -177,4 +177,10 @@ public class Section implements CompilableToJava {
 
         return result;
     }
+
+    public int countAlternatives() {
+        return sentences.stream()
+                .map(Sentence::countAlternatives)
+                .reduce(0, Integer::sum);
+    }
 }

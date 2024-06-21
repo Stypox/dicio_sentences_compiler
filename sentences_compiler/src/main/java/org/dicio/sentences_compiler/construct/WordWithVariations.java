@@ -97,4 +97,11 @@ public class WordWithVariations extends WordBase {
         }
         return res;
     }
+
+    @Override
+    public int countAlternatives() {
+        return parts.stream()
+                .map(List::size)
+                .reduce(1, (a, b) -> a * b);
+    }
 }

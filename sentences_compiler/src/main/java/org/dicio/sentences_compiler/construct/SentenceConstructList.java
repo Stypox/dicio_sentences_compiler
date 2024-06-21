@@ -44,4 +44,11 @@ public final class SentenceConstructList extends AggregateConstruct {
         }
         return res;
     }
+
+    @Override
+    public int countAlternatives() {
+        return constructs.stream()
+                .map(Construct::countAlternatives)
+                .reduce(1, (a, b) -> a * b);
+    }
 }
