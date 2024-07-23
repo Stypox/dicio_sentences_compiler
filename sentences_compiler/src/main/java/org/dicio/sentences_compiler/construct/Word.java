@@ -1,5 +1,7 @@
 package org.dicio.sentences_compiler.construct;
 
+import static org.dicio.sentences_compiler.util.StringNormalizer.lowercaseMaybeNfkdNormalize;
+
 import org.dicio.sentences_compiler.util.StringNormalizer;
 
 import java.io.IOException;
@@ -26,6 +28,10 @@ public final class Word extends WordBase {
 
     public String getValue() {
         return value;
+    }
+
+    public String getNormalizedValue() {
+        return lowercaseMaybeNfkdNormalize(!diacriticsSensitive, value);
     }
 
     public boolean isDiacriticsSensitive() {

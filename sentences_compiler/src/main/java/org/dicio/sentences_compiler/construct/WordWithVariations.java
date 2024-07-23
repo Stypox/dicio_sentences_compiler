@@ -1,5 +1,7 @@
 package org.dicio.sentences_compiler.construct;
 
+import static org.dicio.sentences_compiler.util.StringNormalizer.lowercaseMaybeNfkdNormalize;
+
 import org.dicio.sentences_compiler.util.StringNormalizer;
 
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class WordWithVariations extends WordBase {
         final StringBuilder result = new StringBuilder();
         for (final List<String> part : parts) {
             if (part.size() == 1) {
-                result.append(part.get(0));
+                result.append(lowercaseMaybeNfkdNormalize(!diacriticsSensitive, part.get(0)));
 
             } else {
                 result.append("(?:");
@@ -51,11 +53,7 @@ public class WordWithVariations extends WordBase {
                         result.append("|");
                     }
 
-                    if (diacriticsSensitive) {
-                        result.append(part.get(i));
-                    } else {
-                        result.append(StringNormalizer.nfkdNormalize(part.get(i)));
-                    }
+                    result.append(lowercaseMaybeNfkdNormalize(!diacriticsSensitive, part.get(i)));
                 }
                 result.append(")");
             }

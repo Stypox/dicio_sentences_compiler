@@ -12,4 +12,12 @@ public class StringNormalizer {
         final String normalized = Normalizer.normalize(string, Normalizer.Form.NFKD);
         return diacriticalMarksRemover.matcher(normalized).replaceAll("");
     }
+
+    public static String lowercaseMaybeNfkdNormalize(final boolean normalize, final String string) {
+        if (normalize) {
+            return nfkdNormalize(string.toLowerCase());
+        } else {
+            return string.toLowerCase();
+        }
+    }
 }
